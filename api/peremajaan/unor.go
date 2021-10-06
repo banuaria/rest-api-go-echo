@@ -92,7 +92,7 @@ func DeleteUnor(c echo.Context) error {
 	DbConn := db.Manager()
 	ModelSettingUnor := model.Setting_Unor{}
 
-	dbc := DbConn.Debug().Model(&ModelSettingUnor).Where("id = ?", ModelSettingUnor.Id).Delete(&ModelSettingUnor)
+	dbc := DbConn.Debug().Model(&ModelSettingUnor).Where("id = ?", c.FormValue("id")).Delete(&ModelSettingUnor)
 
 	//Kondisi Jika Terjadi error saat eksekusi query
 	if dbc.Error != nil {
